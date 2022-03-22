@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import Nav from "./Header/Nav";
 import Drawer from "./Header/Drawer";
+import Others from "./Header/Others";
 
 const Outer = styled.section`
   width: 100%;
@@ -62,8 +64,13 @@ const Container = styled.section`
 
 const Header = () => {
   const [hovered, setHovered] = useState(null);
+  const [isOthersOpen, setIsOthersOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   // Nav의 "카트", "트랙" item을 hover할때 나타나는 Drawer의 state
+
+  const handleOthers = () => {
+    setIsOthersOpen((isOthersOpen) => !isOthersOpen);
+  };
 
   const openDrawer = () => {
     setIsDrawerOpen(true);
@@ -73,7 +80,6 @@ const Header = () => {
     setIsDrawerOpen(false);
   };
   // Drawer off
-
   const onMouseLeave = () => {
     closeDrawer();
   };
@@ -85,10 +91,11 @@ const Header = () => {
         <Util>
           <Inner>
             <LogoContainer>
-              <KartRiderLogo>
+              <KartRiderLogo onClick={handleOthers}>
                 <Logo src="https://tmi.nexon.com/img/assets/logo_kart.png" />
-                <ArrowDropDownIcon />
+                {isOthersOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
               </KartRiderLogo>
+              {isOthersOpen ? <Others /> : null}
               <TMILogo>
                 <Logo src="https://tmi.nexon.com/img/assets/tmi_logo_default_b.svg" />
               </TMILogo>
