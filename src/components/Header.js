@@ -9,7 +9,6 @@ const Outer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: black 1px solid;
 `;
 const Util = styled.div`
   width: 100%;
