@@ -36,6 +36,10 @@ const Total = styled.div`
   color: #1f334a;
   letter-spacing: -1px;
 `;
+const Chart = styled.canvas`
+  width: 300px;
+  height: 180px;
+`;
 
 const Rank = () => {
   return (
@@ -49,6 +53,7 @@ const Rank = () => {
           <Blue>3.00위</Blue>
         </Total>
       </Heading>
+      <Chart />
     </Container>
   );
 };
