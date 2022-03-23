@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import Profile from "../components/Main/Profile";
+import VSanimation from "../components/Main/VSanimation";
 
 const Outer = styled.section`
   width: 100%;
@@ -28,7 +29,6 @@ const IconContainer = styled.div`
   margin-right: 5px;
 `;
 
-const Vs = styled.section``;
 const Stats = styled.section``;
 const Tabs = styled.section``;
 const Info = styled.section``;
@@ -46,7 +46,7 @@ const Main = () => {
           카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
         </ApiInfo>
         <Profile />
-        <Vs></Vs>
+        <VSanimation />
         <Stats></Stats>
         <Tabs></Tabs>
         <Info>
