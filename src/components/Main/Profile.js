@@ -9,6 +9,7 @@ import {
   faShareAlt,
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
+import ReportModal from "./Modal/ReportModal";
 
 const Container = styled.section`
   width: 100%;
@@ -169,7 +170,16 @@ const ViewsNum = styled.div`
 `;
 
 const Profile = () => {
+  const [isReportOpen, setIsReportOpen] = useState(false);
   const [isTeamSelected, setIsTeamSelected] = useState(false);
+
+  const openReport = () => {
+    setIsReportOpen(true);
+  };
+
+  const closereport = () => {
+    setIsReportOpen(false);
+  };
 
   const indiSelect = () => {
     setIsTeamSelected(false);
@@ -181,6 +191,7 @@ const Profile = () => {
 
   return (
     <Container>
+      {isReportOpen ? <ReportModal closereport={closereport} /> : null}
       <Background src="https://tmi.nexon.com/img/background_flag_w.png" />
       <Nick>
         <Character src="https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/42c729e64e31aea803e4881432f7b95129ce97535c29e4f9a72919a9f267b418.png" />
@@ -212,7 +223,7 @@ const Profile = () => {
                 </ActionIconContainer>
                 전적갱신
               </Action>
-              <Action>
+              <Action onClick={openReport}>
                 <ActionIconContainer>
                   <FontAwesomeIcon icon={faBell} />
                 </ActionIconContainer>
