@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SearchIcon from "@mui/icons-material/Search";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Inner = styled.div`
   width: 70%;
@@ -57,7 +58,9 @@ const SearchContainer = styled.div`
   height: 32px;
   display: flex;
   align-items: center;
+  padding-right: 15px;
   border-bottom: 1px solid #fff;
+  font-size: 12px;
   color: white;
   opacity: 0.5;
   transition: 0.3s;
@@ -74,7 +77,6 @@ const Search = styled.input`
   height: 32px;
   padding-left: 10px;
   padding-right: 25px;
-  font-size: 12px;
   border: none;
   color: white;
   background: none;
@@ -131,7 +133,7 @@ const Nav = ({ setHovered, openDrawer, closeDrawer }) => {
         </Items>
         <SearchContainer>
           <Search placeholder="닉네임 검색" />
-          <SearchIcon />
+          <FontAwesomeIcon icon={faMagnifyingGlass} />
         </SearchContainer>
       </Inner>
     </Container>

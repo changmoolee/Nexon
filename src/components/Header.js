@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCaretUp } from "@fortawesome/free-solid-svg-icons";
 import Nav from "./Header/Nav";
 import Drawer from "./Header/Drawer";
 import Others from "./Header/Others";
@@ -45,6 +46,10 @@ const KartRiderLogo = styled.div`
   :hover {
     background: #f2f2f2;
   }
+`;
+const IconContainer = styled.div`
+  font-size: 12px;
+  margin: 5px;
 `;
 const TMILogo = styled.div`
   cursor: pointer;
@@ -93,7 +98,13 @@ const Header = () => {
             <LogoContainer>
               <KartRiderLogo onClick={handleOthers}>
                 <Logo src="https://tmi.nexon.com/img/assets/logo_kart.png" />
-                {isOthersOpen ? <ArrowDropUpIcon /> : <ArrowDropDownIcon />}
+                <IconContainer>
+                  {isOthersOpen ? (
+                    <FontAwesomeIcon icon={faCaretUp} />
+                  ) : (
+                    <FontAwesomeIcon icon={faCaretDown} />
+                  )}
+                </IconContainer>
               </KartRiderLogo>
               {isOthersOpen ? <Others /> : null}
               <TMILogo>
