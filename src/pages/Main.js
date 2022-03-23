@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import Profile from "../components/Main/Profile";
 import VSanimation from "../components/Main/VSanimation";
+import Stats from "../components/Main/Stats";
 
 const Outer = styled.section`
   width: 100%;
@@ -29,7 +30,6 @@ const IconContainer = styled.div`
   margin-right: 5px;
 `;
 
-const Stats = styled.section``;
 const Tabs = styled.section``;
 const Info = styled.section``;
 const Left = styled.div``;
@@ -47,7 +47,7 @@ const Main = () => {
         </ApiInfo>
         <Profile />
         <VSanimation />
-        <Stats></Stats>
+        <Stats />
         <Tabs></Tabs>
         <Info>
           <Left></Left>
