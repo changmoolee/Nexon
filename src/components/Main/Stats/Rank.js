@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 
 const Container = styled.section`
@@ -36,12 +36,32 @@ const Total = styled.div`
   color: #1f334a;
   letter-spacing: -1px;
 `;
+const ChartBox = styled.div`
+  width: 300px;
+  height: 180px;
+  padding: 12px;
+`;
 const Chart = styled.canvas`
   width: 300px;
   height: 180px;
 `;
 
 const Rank = () => {
+  const canvasRef = useRef(null);
+  const contextRef = useRef(null);
+
+  const [ctx, setCtx] = useState();
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const context = canvas.getContext("2d");
+    context.strokeStyle = "black";
+    context.lineWidth = 2.5;
+    contextRef.current = context;
+
+    setCtx(contextRef.current);
+  }, []);
+
   return (
     <Container>
       <Heading>
@@ -53,7 +73,9 @@ const Rank = () => {
           <Blue>3.00위</Blue>
         </Total>
       </Heading>
-      <Chart />
+      <ChartBox>
+        <Chart ref={canvasRef}></Chart>
+      </ChartBox>
     </Container>
   );
 };

@@ -5,6 +5,7 @@ import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 import Profile from "../components/Main/Profile";
 import VSanimation from "../components/Main/VSanimation";
 import Stats from "../components/Main/Stats";
+import Taps from "../components/Main/Tabs";
 
 const Outer = styled.section`
   width: 100%;
@@ -30,7 +31,6 @@ const IconContainer = styled.div`
   margin-right: 5px;
 `;
 
-const Tabs = styled.section``;
 const Info = styled.section``;
 const Left = styled.div``;
 const Right = styled.div``;
@@ -48,7 +48,7 @@ const Main = () => {
         <Profile />
         <VSanimation />
         <Stats />
-        <Tabs></Tabs>
+        <Taps />
         <Info>
           <Left></Left>
           <Right></Right>

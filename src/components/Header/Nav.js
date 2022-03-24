@@ -30,19 +30,16 @@ const Item = styled.div`
   align-items: center;
   margin-right: 40px;
   box-sizing: border-box;
-  color: #fff;
-  opacity: 0.5;
   border-bottom: ${({ clicked, index }) =>
     clicked === index ? "4px solid white" : null};
   font-weight: ${({ clicked, index }) => (clicked === index ? "700" : null)};
+  color: #fff;
   opacity: ${({ clicked, index }) => (clicked === index ? "1" : "0.5")};
-  transition: ${({ clicked, index }) =>
-    clicked === index ? "all 0.15s ease-in-out" : null};
+  transition: all 0.15s ease-in-out;
   :hover {
     border-bottom: 4px solid white;
     font-weight: 700;
     opacity: 1;
-    transition: all 0.15s ease-in-out;
   }
 `;
 const Text = styled.a`
