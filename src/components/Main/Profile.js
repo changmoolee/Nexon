@@ -12,7 +12,7 @@ import {
 import ReportModal from "./Modal/ReportModal";
 
 const Container = styled.section`
-  width: 100%;
+  width: 1000px;
   height: 177px;
   background: transparent;
   border-left: 4px solid #07f;
@@ -20,7 +20,7 @@ const Container = styled.section`
 `;
 const Background = styled.img`
   position: absolute;
-  width: 70%;
+  width: 1000px;
   height: inherit;
   object-fit: cover;
   z-index: 1;
@@ -146,22 +146,23 @@ const ActionIconContainer = styled.div`
   margin-right: 10px;
 `;
 const Views = styled.section`
-  width: 100%;
+  width: 325px;
   height: 123px;
   display: flex;
-  justify-content: flex-end;
+  align-content: center;
 `;
 const ViewsBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-right: 50px;
+  margin-left: 200px;
 `;
 const ViewsDesc = styled.div`
   font-size: 14px;
   font-family: Noto Sans KR;
   color: #6c7a89;
+  white-space: nowrap;
 `;
 const ViewsNum = styled.div`
   font-size: 20px;

@@ -3,20 +3,19 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
-const Inner = styled.div`
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
 const Container = styled.div`
   width: 100%;
   height: 55px;
   display: flex;
   justify-content: center;
   background-color: #005fcc;
+`;
+const Inner = styled.div`
+  width: 1000px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Items = styled.section`
@@ -56,6 +55,7 @@ const SearchContainer = styled.div`
   display: flex;
   align-items: center;
   padding-right: 15px;
+  margin-left: 285px;
   border-bottom: 1px solid #fff;
   font-size: 12px;
   color: white;
@@ -74,6 +74,7 @@ const Search = styled.input`
   height: 32px;
   padding-left: 10px;
   padding-right: 25px;
+  margin-left: auto;
   border: none;
   color: white;
   background: none;

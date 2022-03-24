@@ -8,14 +8,18 @@ const Container = styled.section`
   justify-content: center;
   background: #fafafa;
 `;
+const SubContainer = styled.div`
+  width: 1000px;
+  height: 100%;
+  display: flex;
+`;
 const Inner = styled.div`
-  width: 70%;
+  width: 1000px;
   height: 100%;
   display: flex;
   flex-direction: column;
 `;
 const Logos = styled.div`
-  width: 100%;
   height: 46px;
   display: flex;
   align-items: center;
@@ -56,17 +60,19 @@ const Footer = () => {
 
   return (
     <Container>
-      <Inner>
-        <Logos>
-          <Img src="https://tmi.nexon.com/img/assets/lab_logo.svg" />
-          <Desc>Data based on NEXON DEVELOPERS</Desc>
-        </Logos>
-        <Items>
-          {items.map((item) => (
-            <Item key={item}>{item}</Item>
-          ))}
-        </Items>
-      </Inner>
+      <SubContainer>
+        <Inner>
+          <Logos>
+            <Img src="https://tmi.nexon.com/img/assets/lab_logo.svg" />
+            <Desc>Data based on NEXON DEVELOPERS</Desc>
+          </Logos>
+          <Items>
+            {items.map((item) => (
+              <Item key={item}>{item}</Item>
+            ))}
+          </Items>
+        </Inner>
+      </SubContainer>
     </Container>
   );
 };

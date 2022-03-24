@@ -14,14 +14,14 @@ const Outer = styled.section`
   align-items: center;
 `;
 const Util = styled.div`
-  width: 100%;
+  width: 1000px;
   height: 48px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 const Inner = styled.div`
-  width: 70%;
+  width: 100%;
   height: 100%;
   display: flex;
   justify-content: space-between;
@@ -91,39 +91,37 @@ const Header = () => {
   // mouse가 떠났을 때 Drawer off하기
 
   return (
-    <>
-      <Outer>
-        <Util>
-          <Inner>
-            <LogoContainer>
-              <KartRiderLogo onClick={handleOthers}>
-                <Logo src="https://tmi.nexon.com/img/assets/logo_kart.png" />
-                <IconContainer>
-                  {isOthersOpen ? (
-                    <FontAwesomeIcon icon={faCaretUp} />
-                  ) : (
-                    <FontAwesomeIcon icon={faCaretDown} />
-                  )}
-                </IconContainer>
-              </KartRiderLogo>
-              {isOthersOpen ? <Others /> : null}
-              <TMILogo>
-                <Logo src="https://tmi.nexon.com/img/assets/tmi_logo_default_b.svg" />
-              </TMILogo>
-            </LogoContainer>
-            <Homepage>카트라이더 홈페이지 바로가기</Homepage>
-          </Inner>
-        </Util>
-        <Container onMouseLeave={onMouseLeave}>
-          <Nav
-            setHovered={setHovered}
-            openDrawer={openDrawer}
-            closeDrawer={closeDrawer}
-          />
-          {isDrawerOpen ? <Drawer hovered={hovered} /> : null}
-        </Container>
-      </Outer>
-    </>
+    <Outer>
+      <Util>
+        <Inner>
+          <LogoContainer>
+            <KartRiderLogo onClick={handleOthers}>
+              <Logo src="https://tmi.nexon.com/img/assets/logo_kart.png" />
+              <IconContainer>
+                {isOthersOpen ? (
+                  <FontAwesomeIcon icon={faCaretUp} />
+                ) : (
+                  <FontAwesomeIcon icon={faCaretDown} />
+                )}
+              </IconContainer>
+            </KartRiderLogo>
+            {isOthersOpen ? <Others /> : null}
+            <TMILogo>
+              <Logo src="https://tmi.nexon.com/img/assets/tmi_logo_default_b.svg" />
+            </TMILogo>
+          </LogoContainer>
+          <Homepage>카트라이더 홈페이지 바로가기</Homepage>
+        </Inner>
+      </Util>
+      <Container onMouseLeave={onMouseLeave}>
+        <Nav
+          setHovered={setHovered}
+          openDrawer={openDrawer}
+          closeDrawer={closeDrawer}
+        />
+        {isDrawerOpen ? <Drawer hovered={hovered} /> : null}
+      </Container>
+    </Outer>
   );
 };
 

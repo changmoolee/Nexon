@@ -181,8 +181,8 @@ const Cheering = () => {
         <Total>오늘 0개&nbsp; 전체 {messages.length}개</Total>
       </Heading>
       <MessageBox>
-        {messages.map((message) => (
-          <Message>
+        {messages.map((message, index) => (
+          <Message key={index}>
             <NickName>{message.name}</NickName>
             <ContensBox>
               <Contents>{message.contents}</Contents>

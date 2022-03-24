@@ -6,6 +6,7 @@ import Profile from "../components/Main/Profile";
 import VSanimation from "../components/Main/VSanimation";
 import Stats from "../components/Main/Stats";
 import Taps from "../components/Main/Tabs";
+import Info from "../components/Main/Info";
 
 const Outer = styled.section`
   width: 100%;
@@ -14,7 +15,7 @@ const Outer = styled.section`
   background: rgba(0, 0, 0, 0.025);
 `;
 const Inner = styled.div`
-  width: 70%;
+  width: 1000px;
   display: flex;
   flex-direction: column;
 `;
@@ -31,10 +32,6 @@ const IconContainer = styled.div`
   margin-right: 5px;
 `;
 
-const Info = styled.section``;
-const Left = styled.div``;
-const Right = styled.div``;
-
 const Main = () => {
   return (
     <Outer>
@@ -49,10 +46,7 @@ const Main = () => {
         <VSanimation />
         <Stats />
         <Taps />
-        <Info>
-          <Left></Left>
-          <Right></Right>
-        </Info>
+        <Info></Info>
       </Inner>
     </Outer>
   );
