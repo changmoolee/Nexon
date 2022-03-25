@@ -14,7 +14,6 @@ const BlankMain = styled.div`
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState({});
-  const [matchData, setMatchData] = useState([]);
 
   const searchData = async (nickname = "BBEESSTT") => {
     setIsLoading(true);
@@ -35,23 +34,7 @@ function App() {
           )
           .then((res) => {
             setData(res.data);
-            return res;
-          })
-          .then((res) => {
-            let temp = res.data.matches[0].matches;
-
-            for (let i = 0; i < temp.length; i++) {
-              axios
-                .get(
-                  `https://joseph-proxy.herokuapp.com/https://api.nexon.co.kr/kart/v1.0/matches/${temp[i].matchId}`,
-                  {
-                    headers: { Authorization: process.env.REACT_APP_API_KEY },
-                  }
-                )
-                .then((res) => setMatchData([...matchData, res.data]))
-                .then(() => setIsLoading(false))
-                .catch((err) => console.log(err));
-            }
+            setIsLoading(false);
           })
           .catch((err) => {
             console.log(err);
@@ -68,8 +51,6 @@ function App() {
       });
   };
 
-  // console.log(matchData);
-
   useEffect(() => {
     searchData();
   }, []);
@@ -83,7 +64,7 @@ function App() {
           <BlankMain />
         </>
       ) : (
-        <Main data={data} matchData={matchData} />
+        <Main data={data} />
       )}
       <Footer />
     </div>
