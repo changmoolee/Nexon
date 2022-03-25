@@ -67,7 +67,7 @@ const Container = styled.section`
   width: 100%;
 `;
 
-const Header = () => {
+const Header = ({ searchData }) => {
   const [hovered, setHovered] = useState(null);
   const [isOthersOpen, setIsOthersOpen] = useState(false);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -118,6 +118,7 @@ const Header = () => {
           setHovered={setHovered}
           openDrawer={openDrawer}
           closeDrawer={closeDrawer}
+          searchData={searchData}
         />
         {isDrawerOpen ? <Drawer hovered={hovered} /> : null}
       </Container>

@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Loading from "./components/Loading";
 import Main from "./pages/Main";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [data, setData] = useState({});
 
   const searchData = (nickname = "BBEESSTT") => {
+    setIsLoading(true);
     return axios
       .get(
         `https://joseph-proxy.herokuapp.com/https://api.nexon.co.kr/kart/v1.0/users/nickname/${nickname}`,
@@ -23,10 +26,22 @@ function App() {
               headers: { Authorization: process.env.REACT_APP_API_KEY },
             }
           )
-          .then((res) => console.log(res.data));
+          .then((res) => setData(res.data))
+          .then(() => setIsLoading(false))
+          .catch((err) => console.log(err));
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        if (err.response.status) {
+          alert(
+            "일치하는 유저가 없습니다. 닉네임이 변경되었는지 확인해 주세요."
+          );
+          console.log(err);
+          setIsLoading(false);
+        }
+      });
   };
+
+  console.log(data);
 
   useEffect(() => {
     searchData();
@@ -34,7 +49,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      {isLoading ? <Loading /> : null}
+      <Header searchData={searchData} />
       <Main />
       <Footer />
     </div>

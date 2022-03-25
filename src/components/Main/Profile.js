@@ -9,7 +9,7 @@ import {
   faShareAlt,
   faEye,
 } from "@fortawesome/free-solid-svg-icons";
-import ReportModal from "./Modal/ReportModal";
+import ReportModal from "../Modal/ReportModal";
 
 const Container = styled.section`
   width: 1000px;
