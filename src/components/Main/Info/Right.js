@@ -117,7 +117,7 @@ const Detail = styled.div`
   flex-direction: column;
   font-size: 12px;
   font-weight: 500;
-  color: ${({ isMine, index }) => (isMine === index ? "#0277ff" : "#1f334a")};
+  color: ${({ isMine, index }) => (isMine === index ? "#1f334a" : "#0277ff")};
 `;
 const DetailRank = styled.div`
   width: 100%;
@@ -161,7 +161,7 @@ const DetailTime = styled.div`
     isMine === index ? "#f2f2f2" : "white"};
 `;
 
-const Right = ({ data }) => {
+const Right = ({ data, matchData }) => {
   const matchDatas = data.matches?.[0].matches;
 
   const [detailOpen, setDetailOpen] = useState(
@@ -210,7 +210,7 @@ const Right = ({ data }) => {
                 <FontAwesomeIcon icon={faCaretDown} />
               </Open>
             </Match>
-            {/* {detailOpen[index] ? (
+            {detailOpen[index] ? (
               <Details>
                 <Detail>
                   <DetailRank>#</DetailRank>
@@ -218,24 +218,18 @@ const Right = ({ data }) => {
                   <DetailNick>유저</DetailNick>
                   <DetailTime>기록</DetailTime>
                 </Detail>
-                <Detail>
-                  <DetailRank>{data.other1.result[0]}</DetailRank>
-                  <DetailKart>
-                    <DetailKartImage src={data.other1.kartImage} />
-                  </DetailKart>
-                  <DetailNick>{data.other1.username}</DetailNick>
-                  <DetailTime>{data.other1.time}</DetailTime>
-                </Detail>
-                <Detail>
-                  <DetailRank>{data.other2.result[0]}</DetailRank>
-                  <DetailKart>
-                    <DetailKartImage src={data.other2.kartImage} />
-                  </DetailKart>
-                  <DetailNick>{data.other2.username}</DetailNick>
-                  <DetailTime>{data.other2.time}</DetailTime>
-                </Detail>
+                {matchData[index]?.players.map((player) => (
+                  <Detail key={player.accountNo}>
+                    <DetailRank>{player.matchRank}</DetailRank>
+                    <DetailKart>
+                      <DetailKartImage src="" />
+                    </DetailKart>
+                    <DetailNick>{player.characterName}</DetailNick>
+                    <DetailTime>{player.matchTime}</DetailTime>
+                  </Detail>
+                ))}
               </Details>
-            ) : null} */}
+            ) : null}
           </MatchBox>
         ))}
       </Matches>

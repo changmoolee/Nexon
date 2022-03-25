@@ -32,7 +32,7 @@ const IconContainer = styled.div`
   margin-right: 5px;
 `;
 
-const Main = ({ data }) => {
+const Main = ({ data, matchData }) => {
   return (
     <Outer>
       <Inner>
@@ -46,7 +46,7 @@ const Main = ({ data }) => {
         <VSanimation />
         <Stats data={data} />
         <Taps />
-        <Info data={data} />
+        <Info data={data} matchData={matchData} />
       </Inner>
     </Outer>
   );

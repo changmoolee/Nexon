@@ -10,11 +10,11 @@ const Container = styled.section`
   margin-top: 20px;
 `;
 
-const Info = ({ data }) => {
+const Info = ({ data, matchData }) => {
   return (
     <Container>
       <Left data={data} />
-      <Right data={data} />
+      <Right data={data} matchData={matchData} />
     </Container>
   );
 };
