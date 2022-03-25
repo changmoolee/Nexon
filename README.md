@@ -78,4 +78,10 @@ linear-gradient로 원하는 색 변화를 가진 배경을 얻을 수 있었지
 <br><br> 
 ![응원남기기](https://user-images.githubusercontent.com/84559872/160145053-e3c7e0dd-883a-4eb4-8ed4-774fecb3152d.gif)
 
+### 4. Drawer 기능
+각 Match의 arrow icon을 클릭하면 drawer가 나옵니다.<br> 
+서버를 미구현으로 카트 이미지 등 데이터는 구현하지 못했습니다.(미완성)
+
+<br>
+![drawer](https://user-images.githubusercontent.com/84559872/160174390-1862e70a-e82a-41ca-b620-d31cac06f508.gif)
 
