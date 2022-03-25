@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+<h1>wanted-codestates-project-9 넥슨 과제</h1>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
 
-## Available Scripts
+## 자세한 실행 방법
 
-In the project directory, you can run:
+<br>
+1. git clone 명령어를 통해 로컬에 git 저장소를 복제합니다.
+<pre><code>git clone https://github.com/changmoolee/wanted-codestates-project-9.git</code></pre>
+2. 다운 받은 폴더로 이동합니다.
+<pre><code>cd wanted-codestates-project-9</code></pre>
+3. npm install 명령어를 입력하여 모듈들을 다운로드합니다.
+<pre><code>npm install</code></pre>
+4. npm start 명령어를 입력하여 실행합니다.
+<pre><code>npm start</code></pre>
+<br>
 
-### `npm start`
+## 사용한 스택
+react, styled-components
+<br><br><br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 폴더 구조
+- pages
+페이지는 Main.js 페이지 구현 중에 있습니다.(미완성)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- components
+Header와 Footer를 비롯하여 Main 페이지를 구성하는 컴포넌트 파일들이 있습니다.
+<br><br><br>
 
-### `npm test`
+## Header
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Drawer, Tab 기능
+클릭하면 나오는 Drawer를 비롯하여, hover시 bottom-line이 생기는 tab 창들을 구현했습니다.
+![Header](https://user-images.githubusercontent.com/84559872/160138297-7fa679df-037a-4e9c-8353-93311a316790.gif)
 
-### `npm run build`
+### 검색 기능, Loading 기능
+닉네임 검색 시 데이터를 받아오도록 하였습니다.(미완성) <br>
+api 호출 중에는 Loading창이 구현되도록 하였습니다.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![로딩및검색](https://user-images.githubusercontent.com/84559872/160141519-610af9fc-2094-4d10-9759-683345f6433a.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+cors 에러를 마주쳤는데, heroku를 통한 proxy 서버를 활용하여 해결하였습니다.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br><br><br>
+## Main
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 신고관련 Modal기능
+ 버튼을 누르면 Modal이 나오고 Modal창 이외 Dim을 누르면 사라집니다. <br>빈 문자열 만 입력시, 추가 Modal이 나오도록 구현했습니다.<br> 
+![Modal](https://user-images.githubusercontent.com/84559872/160142497-caeffc75-8b9d-42ab-bb35-8c26fe147459.gif)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
+중첩된 modal을 구현하는게 잠시 혼란스러웠지만 z-index를 달리 주어 해결할 수 있었습니다.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Animation 기능
+총 길이 20초로 애니메이션이 무한 반복됩니다. 
+![애니메이션](https://user-images.githubusercontent.com/84559872/160143373-fa036fef-0ec2-4c7f-9711-958ada2eca43.gif)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 구현하면서 어려웠던 점과 해결 방법 (Error Handling Log)
+linear-gradient로 원하는 색 변화를 가진 배경을 얻을 수 있었지만 <br>
+길게 늘여서 지속적으로 애니메이션화 시키는 방법을 찾기 힘들었습니다. <br>
+이는 background 사이즈를 키움으로써 해결할 수 있었습니다.
+          
+### 응원 한마디 구현
 
-### Code Splitting
+닉네임과 응원을 남기면 응원이 추가됩니다.<br>
+닉네임, 응원을 빈 문자열만 입력 시 alert이 나옵니다.<br>
+서버 등을 활용한 구현에는 실패했습니다.(미완성)
+![응원남기기](https://user-images.githubusercontent.com/84559872/160145053-e3c7e0dd-883a-4eb4-8ed4-774fecb3152d.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
