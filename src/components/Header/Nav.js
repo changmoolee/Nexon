@@ -1,14 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import SearchIcon from "@mui/icons-material/Search";
-
-const Inner = styled.div`
-  width: 70%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 const Container = styled.div`
   width: 100%;
@@ -16,6 +9,13 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   background-color: #005fcc;
+`;
+const Inner = styled.div`
+  width: 1000px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const Items = styled.section`
@@ -29,19 +29,16 @@ const Item = styled.div`
   align-items: center;
   margin-right: 40px;
   box-sizing: border-box;
-  color: #fff;
-  opacity: 0.5;
   border-bottom: ${({ clicked, index }) =>
     clicked === index ? "4px solid white" : null};
   font-weight: ${({ clicked, index }) => (clicked === index ? "700" : null)};
+  color: #fff;
   opacity: ${({ clicked, index }) => (clicked === index ? "1" : "0.5")};
-  transition: ${({ clicked, index }) =>
-    clicked === index ? "all 0.15s ease-in-out" : null};
+  transition: all 0.15s ease-in-out;
   :hover {
     border-bottom: 4px solid white;
     font-weight: 700;
     opacity: 1;
-    transition: all 0.15s ease-in-out;
   }
 `;
 const Text = styled.a`
@@ -57,7 +54,10 @@ const SearchContainer = styled.div`
   height: 32px;
   display: flex;
   align-items: center;
+  padding-right: 15px;
+  margin-left: 285px;
   border-bottom: 1px solid #fff;
+  font-size: 12px;
   color: white;
   opacity: 0.5;
   transition: 0.3s;
@@ -74,7 +74,7 @@ const Search = styled.input`
   height: 32px;
   padding-left: 10px;
   padding-right: 25px;
-  font-size: 12px;
+  margin-left: auto;
   border: none;
   color: white;
   background: none;
@@ -89,10 +89,23 @@ const Search = styled.input`
   }
 `;
 
-const Nav = ({ setHovered, openDrawer, closeDrawer }) => {
+const IconContainer = styled.div`
+  cursor: pointer;
+`;
+
+const Nav = ({
+  setHovered,
+  openDrawer,
+  closeDrawer,
+  searchData,
+  setIsLoading,
+  setUserData,
+}) => {
   const items = ["홈", "랭킹", "카트", "트랙"];
   const [clicked, setClicked] = useState(null);
   // 클릭한 아이템의 index를 저장하는 state
+  const [nickname, setNickname] = useState("");
+  // input의 value를 저장하는 state
 
   const onClickItem = (index) => {
     setClicked(index);
@@ -109,6 +122,11 @@ const Nav = ({ setHovered, openDrawer, closeDrawer }) => {
       setHovered(null);
       closeDrawer();
     }
+  };
+
+  const onChangeInput = (event) => {
+    setNickname(event.target.value);
+    console.log(nickname);
   };
 
   return (
@@ -130,8 +148,14 @@ const Nav = ({ setHovered, openDrawer, closeDrawer }) => {
           ))}
         </Items>
         <SearchContainer>
-          <Search placeholder="닉네임 검색" />
-          <SearchIcon />
+          <Search
+            placeholder="닉네임 검색"
+            value={nickname}
+            onChange={onChangeInput}
+          />
+          <IconContainer onClick={() => searchData(nickname)}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </IconContainer>
         </SearchContainer>
       </Inner>
     </Container>
