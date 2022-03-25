@@ -1,6 +1,9 @@
 <h1>wanted-codestates-project-9 넥슨 과제</h1>
 
-<br>
+
+### 배포 url
+https://kartrider-joseph.netlify.app/
+<br><br>
 
 ## 자세한 실행 방법
 
