@@ -4,6 +4,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Loading from "./components/Loading";
 import Main from "./pages/Main";
+import styled from "styled-components";
+
+const BlankMain = styled.div`
+  width: 100%;
+  height: 800px;
+`;
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,7 +32,9 @@ function App() {
               headers: { Authorization: process.env.REACT_APP_API_KEY },
             }
           )
-          .then((res) => setData(res.data))
+          .then((res) => {
+            setData(res.data);
+          })
           .then(() => setIsLoading(false))
           .catch((err) => console.log(err));
       })
@@ -49,9 +57,15 @@ function App() {
 
   return (
     <div className="App">
-      {isLoading ? <Loading /> : null}
       <Header searchData={searchData} />
-      <Main />
+      {isLoading ? (
+        <>
+          <Loading />
+          <BlankMain />
+        </>
+      ) : (
+        <Main data={data} />
+      )}
       <Footer />
     </div>
   );

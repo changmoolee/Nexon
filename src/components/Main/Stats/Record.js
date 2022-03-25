@@ -114,7 +114,7 @@ const RunMode = styled.span`
   font-weight: 700;
   color: #1f334a;
 `;
-const Record = () => {
+const Record = ({ data }) => {
   const degrees = [35, 91, 67];
 
   const convertToDeg = (percent) => {

@@ -170,7 +170,7 @@ const ViewsNum = styled.div`
   letter-spacing: -1px;
 `;
 
-const Profile = () => {
+const Profile = ({ data }) => {
   const [isReportOpen, setIsReportOpen] = useState(false);
   const [isTeamSelected, setIsTeamSelected] = useState(false);
 
@@ -198,7 +198,7 @@ const Profile = () => {
         <Character src="https://s3-ap-northeast-1.amazonaws.com/solution-userstats/metadata/character/42c729e64e31aea803e4881432f7b95129ce97535c29e4f9a72919a9f267b418.png" />
         <Name>
           <Heading>
-            BBEESSTT
+            {data.nickName}
             <License src="https://tmi.nexon.com/img/icon_l3.png" />
           </Heading>
           <Buttons>

@@ -93,7 +93,14 @@ const IconContainer = styled.div`
   cursor: pointer;
 `;
 
-const Nav = ({ setHovered, openDrawer, closeDrawer, searchData }) => {
+const Nav = ({
+  setHovered,
+  openDrawer,
+  closeDrawer,
+  searchData,
+  setIsLoading,
+  setUserData,
+}) => {
   const items = ["홈", "랭킹", "카트", "트랙"];
   const [clicked, setClicked] = useState(null);
   // 클릭한 아이템의 index를 저장하는 state

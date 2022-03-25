@@ -32,7 +32,7 @@ const IconContainer = styled.div`
   margin-right: 5px;
 `;
 
-const Main = () => {
+const Main = ({ data }) => {
   return (
     <Outer>
       <Inner>
@@ -42,11 +42,11 @@ const Main = () => {
           </IconContainer>
           카트라이더 매치데이터는 최근 1년치 데이터만 확인할 수 있습니다
         </ApiInfo>
-        <Profile />
+        <Profile data={data} />
         <VSanimation />
-        <Stats />
+        <Stats data={data} />
         <Taps />
-        <Info></Info>
+        <Info data={data} />
       </Inner>
     </Outer>
   );

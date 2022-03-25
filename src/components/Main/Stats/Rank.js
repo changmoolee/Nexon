@@ -46,7 +46,7 @@ const Chart = styled.canvas`
   height: 180px;
 `;
 
-const Rank = () => {
+const Rank = ({ data }) => {
   const canvasRef = useRef(null);
   const contextRef = useRef(null);
 

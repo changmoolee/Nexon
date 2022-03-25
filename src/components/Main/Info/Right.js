@@ -2,83 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-
-const matchData = [
-  {
-    mine: {
-      type: "1일전",
-      result: [1, 8],
-      track: "1920 아슬아슬 비행장",
-      kart: "몬스터XLE",
-      time: "2'28'56",
-      kartImage: "",
-    },
-    other1: {
-      result: [2, 8],
-      kartImage: "",
-      username: "조총",
-      time: "3'28'56",
-    },
-    other2: {
-      result: [3, 8],
-      kartImage: "",
-      username: "나비",
-      time: "4'28'56",
-    },
-  },
-  {
-    mine: {
-      type: "1일전",
-      result: [2, 8],
-      track: "1920 아슬아슬 비행장",
-      kart: "몬스터XLE",
-      time: "2'28'56",
-      kartImage: "",
-    },
-    other1: {
-      result: [2, 8],
-      kartImage: "",
-      username: "가뭄",
-      time: "3'28'56",
-    },
-    other2: {
-      result: [3, 8],
-      kartImage: "",
-      username: "순리",
-      time: "4'28'56",
-    },
-  },
-  {
-    mine: {
-      type: "1일전",
-      result: [null, 8],
-      track: "1920 아슬아슬 비행장",
-      kart: "몬스터XLE",
-      time: "-",
-      kartImage: "",
-    },
-  },
-  {
-    mine: {
-      type: "1일전",
-      result: [1, 8],
-      track: "1920 아슬아슬 비행장",
-      kart: "몬스터XLE",
-      time: "2'28'56",
-      kartImage: "",
-    },
-  },
-  {
-    mine: {
-      type: "1일전",
-      result: [2, 8],
-      track: "1920 아슬아슬 비행장",
-      kart: "몬스터XLE",
-      time: "2'28'56",
-      kartImage: "",
-    },
-  },
-];
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
+import formatDistance from "date-fns/formatDistance";
+import { ko } from "date-fns/locale";
+import { convertTrackId, convertKart } from "./convert";
 
 const Container = styled.section`
   width: 660px;
@@ -102,14 +29,18 @@ const Match = styled.div`
   grid-template-columns: 65px 150px 150px 150px 100px 40px;
   margin-bottom: 5px;
   border-left: ${({ rank }) =>
-    typeof rank !== "number"
+    rank === "" || rank === "99"
       ? "4px solid #f62459"
-      : rank === 1
+      : rank === "1"
       ? "4px solid #07f"
       : "4px solid #8893a2"};
   color: "#1f334a";
   background: ${({ rank }) =>
-    typeof rank !== "number" ? "#fbf0f2" : rank === 1 ? "#eff3fb" : "white"};
+    rank === "" || rank === "99"
+      ? "#fbf0f2"
+      : rank === "1"
+      ? "#eff3fb"
+      : "white"};
 `;
 const Type = styled.span`
   display: flex;
@@ -126,9 +57,13 @@ const Result = styled.span`
   font-weight: 700;
   font-style: italic;
   color: ${({ rank }) =>
-    typeof rank !== "number" ? "#f62459" : rank === 1 ? "#07f" : "#1f334a"};
+    rank === "" || rank === "99"
+      ? "#f62459"
+      : rank === "1"
+      ? "#07f"
+      : "#1f334a"};
   opacity: ${({ rank }) =>
-    typeof rank !== "number" ? "1" : rank === 1 ? "1" : "0.5"};
+    rank === "" || rank === "99" ? "1" : rank === "1" ? "1" : "0.5"};
   box-sizing: border-box;
 `;
 const ResultTotal = styled.span`
@@ -162,7 +97,11 @@ const Open = styled.span`
   cursor: pointer;
   :hover {
     background: ${({ rank }) =>
-      typeof rank !== "number" ? "#f62459" : rank === 1 ? "#07f" : "#1f334a"};
+      rank === "" || rank === "99"
+        ? "#f62459"
+        : rank === "1"
+        ? "#07f"
+        : "#1f334a"};
   }
 `;
 
@@ -222,9 +161,11 @@ const DetailTime = styled.div`
     isMine === index ? "#f2f2f2" : "white"};
 `;
 
-const Right = () => {
+const Right = ({ data }) => {
+  const matchDatas = data.matches?.[0].matches;
+
   const [detailOpen, setDetailOpen] = useState(
-    Array(matchData.length).fill(false)
+    Array(matchDatas?.length).fill(false)
   );
 
   const handleDetail = (index) => {
@@ -236,31 +177,40 @@ const Right = () => {
   return (
     <Container>
       <Matches>
-        {matchData.map((data, index) => (
+        {matchDatas?.map((data, index) => (
           <MatchBox key={index}>
-            <Match rank={data.mine.result[0]}>
-              <Type>{data.mine.type}</Type>
-              <Result rank={data.mine.result[0]}>
-                {data.mine.result[0] === null ? (
+            <Match rank={data.player.matchRank}>
+              <Type>
+                {formatDistanceToNow(new Date(data.endTime), { locale: ko })}
+              </Type>
+              <Result rank={data.player.matchRank}>
+                {data.player.matchRank === "" ||
+                data.player.matchRank === "99" ? (
                   "#리타이어"
                 ) : (
                   <>
-                    #{data.mine.result[0]}
-                    <ResultTotal>/{data.mine.result[1]}</ResultTotal>
+                    #{Number(data.player.matchRank)}
+                    <ResultTotal>/{data.playerCount}</ResultTotal>
                   </>
                 )}
               </Result>
-              <Track>{data.mine.track}</Track>
-              <Kart>{data.mine.kart}</Kart>
-              <Time>{data.mine.time}</Time>
+              <Track>{convertTrackId(data.trackId)}</Track>
+              <Kart>{convertKart(data.player.kart)}</Kart>
+              <Time>
+                {formatDistance(
+                  new Date(data.endTime),
+                  new Date(data.startTime),
+                  { unit: "second", locale: ko }
+                )}
+              </Time>
               <Open
-                rank={data.mine.result[0]}
+                rank={data.player.matchRank}
                 onClick={() => handleDetail(index)}
               >
                 <FontAwesomeIcon icon={faCaretDown} />
               </Open>
             </Match>
-            {detailOpen[index] ? (
+            {/* {detailOpen[index] ? (
               <Details>
                 <Detail>
                   <DetailRank>#</DetailRank>
@@ -285,7 +235,7 @@ const Right = () => {
                   <DetailTime>{data.other2.time}</DetailTime>
                 </Detail>
               </Details>
-            ) : null}
+            ) : null} */}
           </MatchBox>
         ))}
       </Matches>

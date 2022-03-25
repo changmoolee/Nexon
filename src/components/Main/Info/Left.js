@@ -133,7 +133,7 @@ const Td = styled.div`
   letter-spacing: -1px;
 `;
 
-const Left = () => {
+const Left = ({ data }) => {
   const tabs = ["트랙", "카트"];
   const TrackRecord = Array(5).fill("");
 
