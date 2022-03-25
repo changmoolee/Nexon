@@ -54,10 +54,15 @@ const VSanimation = () => {
   return (
     <Container>
       <Text>1대1 매칭 시뮬레이터 - 'BBEESSTT' 와 가상 대결을 펼쳐보세요.</Text>
-      <Button>
-        <FontAwesomeIcon icon={faCalculator} />
-        &nbsp;&nbsp;매칭하기
-      </Button>
+      <a
+        href="https://tmi.nexon.com/simulator/BBEESSTT"
+        style={{ textDecoration: "none", color: "white" }}
+      >
+        <Button>
+          <FontAwesomeIcon icon={faCalculator} />
+          &nbsp;&nbsp;매칭하기
+        </Button>
+      </a>
     </Container>
   );
 };

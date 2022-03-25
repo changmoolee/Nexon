@@ -110,7 +110,12 @@ const Header = ({ searchData }) => {
               <Logo src="https://tmi.nexon.com/img/assets/tmi_logo_default_b.svg" />
             </TMILogo>
           </LogoContainer>
-          <Homepage>카트라이더 홈페이지 바로가기</Homepage>
+          <a
+            href="https://kart.nexon.com/Main/Index.aspx"
+            style={{ textDecoration: "none" }}
+          >
+            <Homepage>카트라이더 홈페이지 바로가기</Homepage>
+          </a>
         </Inner>
       </Util>
       <Container onMouseLeave={onMouseLeave}>
