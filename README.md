@@ -83,5 +83,6 @@ linear-gradient로 원하는 색 변화를 가진 배경을 얻을 수 있었지
 서버를 미구현으로 카트 이미지 등 데이터는 구현하지 못했습니다.(미완성)
 
 <br>
-![drawer](https://user-images.githubusercontent.com/84559872/160174390-1862e70a-e82a-41ca-b620-d31cac06f508.gif)
+![drawer](https://user-images.githubusercontent.com/84559872/160175003-6734b2b8-cd9e-45eb-af58-8f3b343a3ab9.gif)
+
 
