@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
@@ -111,6 +112,7 @@ const Details = styled.section`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
 `;
+
 const Detail = styled.div`
   height: 100%;
   display: flex;
@@ -161,17 +163,35 @@ const DetailTime = styled.div`
     isMine === index ? "#f2f2f2" : "white"};
 `;
 
-const Right = ({ data, matchData }) => {
+const Right = ({ data }) => {
   const matchDatas = data.matches?.[0].matches;
 
+  const [players, setPlayers] = useState(Array(matchDatas?.length).fill({}));
   const [detailOpen, setDetailOpen] = useState(
     Array(matchDatas?.length).fill(false)
   );
+
+  const getMatchData = (matchId, index) => {
+    axios
+      .get(
+        `https://joseph-proxy.herokuapp.com/https://api.nexon.co.kr/kart/v1.0/matches/${matchId}`,
+        {
+          headers: { Authorization: process.env.REACT_APP_API_KEY },
+        }
+      )
+      .then((res) => {
+        let temp = players;
+        temp[index] = res.data;
+        setPlayers(temp);
+      })
+      .catch((err) => console.log(err));
+  };
 
   const handleDetail = (index) => {
     let temp = [...detailOpen];
     temp[index] = !temp[index];
     setDetailOpen(temp);
+    getMatchData(matchDatas[index].matchId, index);
   };
 
   return (
@@ -218,7 +238,7 @@ const Right = ({ data, matchData }) => {
                   <DetailNick>유저</DetailNick>
                   <DetailTime>기록</DetailTime>
                 </Detail>
-                {matchData[index]?.players.map((player) => (
+                {players[index].players?.map((player) => (
                   <Detail key={player.accountNo}>
                     <DetailRank>{player.matchRank}</DetailRank>
                     <DetailKart>
