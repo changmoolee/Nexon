@@ -82,7 +82,8 @@ linear-gradient로 원하는 색 변화를 가진 배경을 얻을 수 있었지
 각 Match의 arrow icon을 클릭하면 drawer가 나옵니다.<br> 
 서버를 미구현으로 카트 이미지 등 데이터는 구현하지 못했습니다.(미완성)
 
-<br>
+<br><br>
+
 ![drawer](https://user-images.githubusercontent.com/84559872/160175003-6734b2b8-cd9e-45eb-af58-8f3b343a3ab9.gif)
 
 
